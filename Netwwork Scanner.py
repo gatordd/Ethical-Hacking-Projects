@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 
 import scapy.all as scapy
-import optparse
+import argparse
 
 def get_target():
     # creates an object that can handle user input / options after the .py command
-    parser = optparse.OptionParser()
+    parser = argparse.ArgumentParser()
 
     # Adds options to the object
-    parser.add_option("-t", "--target", dest="target", help="Target IP address range. Ex: 10.0.2.1/24")
+    parser.add_argument("-t", "--target", dest="target", help="Target IP address range. Ex: 10.0.2.1/24")
 
     # allows the object to understand what the user has entered, and handle it
-    (options, arguments) = parser.parse_args()
+    options = parser.parse_args()
     if not options.target:
         parser.error("[-] Please specify a target, use -h or --help for more info.")
     return options
